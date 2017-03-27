@@ -26,21 +26,20 @@ export default class MarvelMap extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			heros :[]
+			heroes :[]
 		}
 	}
 	componentDidMount() {
-	 axios.get(URL).then((res) => {
+		axios.get(URL).then((res) => {
 
-	 	this.setState({heros : res.data.data.results});
+	 	this.setState({heroes : res.data.data.results});
+
     })
-		
 	}
-	render() {
-		return (
-			<div>
-				<h1 style={{textAlign:"center"}}>Liste des super héros:</h1>
-				{this.state.heros.map((hero) => {
+
+	fetchHeroes() {
+		
+		return this.state.heroes.map((hero) => {
 					return(
 
 							<Card key={hero.id}
@@ -49,7 +48,14 @@ export default class MarvelMap extends React.Component{
 							</Card>
 					)
 		
-				})}
+				})
+	}
+	render() {
+		let results = this.fetchHeroes()
+		return (
+			<div>
+				<h1 style={{textAlign:"center"}}>Liste des super héros:</h1>
+				<div>{results}</div>
 			</div>
 
 			)
