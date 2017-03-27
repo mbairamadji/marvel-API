@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MarvelMap from '../Components/MarvelMap'
-
+import './app.css'
 
  class App extends React.Component {
 	render () {
