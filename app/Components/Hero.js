@@ -1,12 +1,23 @@
 import React from 'react'
+import './MarvelMap'
 
 
 export default class Hero extends React.Component {
-	render() {
-		console.log(this.props)
-		return (
-				<div>
+	constructor(props) {
+		super(props);
+		
+	}
 
+
+	componentDidMount() {
+		
+	}
+	
+	render() {	
+		return (
+
+				<div>
+				console.log(this.props)
 				</div>
 
 			)

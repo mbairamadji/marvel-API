@@ -10,7 +10,7 @@ import './app.css'
 ReactDOM.render( 
 				<Router history={browserHistory} >
 					<Route path="/" component={MarvelMap}>
-						<Route path="/hero/:id" component={Hero}/>
+						<Route path="/hero" component={Hero}/>
 					</Route>
 				</Router>,
 

@@ -38,7 +38,7 @@ export default class Card extends React.Component{
 		return (
 				<div style={cardStyle.card}>
 					<div style={cardStyle.cardImage}>
-					<Link to="/hero/:id"><img src={this.props.img} style={{marginLeft:"25px"}} /></Link>
+						<img src={this.props.img} style={{marginLeft:"25px"}} />
 					</div>
 					<p style={cardStyle.cardName}>{this.props.name}</p>
 					<div style={cardStyle.cardInfo}>

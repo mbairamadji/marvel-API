@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "build": "webpack -p",
     "dev": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot --history-api-fallback"
   },
   "author": "",
