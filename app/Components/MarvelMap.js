@@ -7,7 +7,7 @@ import crypto from 'crypto'
 //Api URL and Keys
 const API_PUBLIC = "298bab46381a6daaaee19aa5c8cafea5";
 const API_PRIVATE = "b0223681fced28de0fe97e6b9cd091dd36a5b71d";
-const BASE_URL = "http://gateway.marvel.com:80";
+const BASE_URL = "https://gateway.marvel.com:80";
 const URI = "/v1/public/characters";
 const INFO_URI = URI + "/" + 1009144;
 
