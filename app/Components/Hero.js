@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import crypto from 'crypto'
 import Aim from './Aim'
+import Comic from './Comic'
+import Serie from './Serie'
 
 
 //Api URL and Keys
@@ -21,8 +23,6 @@ const hash = crypto.createHash("md5").update(concatenatedString).digest("hex");
 
 //Reqest URL
 const infoUrl = `${BASE_URL}${INFO_URI}?ts=${ts}&apikey=${API_PUBLIC}&hash=${hash}`;
-const comicsUrl = `${BASE_URL}${INFO_URI}/comics?ts=${ts}&apikey=${API_PUBLIC}&hash=${hash}`;
-const seriesUrl = `${BASE_URL}${INFO_URI}/series?ts=${ts}&apikey=${API_PUBLIC}&hash=${hash}`;
 
 export default class Hero extends React.Component {
 constructor(props) {
@@ -34,18 +34,19 @@ constructor(props) {
 	};
 	this.getDetails = this.getDetails.bind(this);
 	this.getComics = this.getComics.bind(this);
-	this.renderComics = this.renderComics.bind(this);
-	
+    this.getSeries = this.getSeries.bind(this);
+
 }
 
 componentDidMount() {
 		axios.get(infoUrl).then((res) => {
-    	 	this.setState({details : res.data.data.results});
+    	 	this.setState({details : res.data.data.results,
+    	 	comics : res.data.data.results[0].comics.items,
+    	 	series : res.data.data.results[0].series.items});
 		
     })
 
 }
-
 
 	getDetails() {
 		return this.state.details.map((detail) => {
@@ -60,28 +61,35 @@ componentDidMount() {
 				)
 		})		
 	}
-	getComics() {
-		return this.state.details.map((e) => {
-			return this.setState({comics : comics.push(e.comics.items)});
-			
-		})		
-	}
-	 renderComics() {
-	 	return this.state.comics.map((e,comic) => {
-	 		return(<li key={e}>
-	 				   {comic.name} 
-	 			   </li>)
+	
+	 getComics() {
+	 	return this.state.comics.map((comic) => {
+	 		return(<Comic key={comic.resourceURI} comic={comic.name}>
+	 				
+	 			   </Comic>)
 	 	})
 	 }
 
+	 getSeries() {
+	 	return this.state.series.map((serie) => {
+	 		return(<Serie key={serie.resourceURI} serie={serie.name}>
+	 				
+	 			   </Serie>)
+	 	})
+	 }
 
 	render() {	
 		let aimDetails = this.getDetails();
-		let renderComics = this.renderComics();
+	    let comics = this.getComics();
+	    let series = this.getSeries();
+
 		return (
 				<div>
-					{aimDetails}
-					{renderComics}
+				    <div>{aimDetails}</div>
+				    <h3 style={{marginLeft: "300px"}}>Comics</h3>
+					{comics}
+					<h3 style={{marginLeft: "300px"}}>Series</h3>
+					{series}
 				</div>
 			)
 	}	

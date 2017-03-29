@@ -27,11 +27,9 @@ const charactersUrl = `${BASE_URL}${URI}?ts=${ts}&apikey=${API_PUBLIC}&hash=${ha
 export default class MarvelMap extends React.Component{
 	constructor(props) {
 		super(props);
-		this.state = {
-			heroes :[],
-			details :[]
-		}
+		this.state = {heroes :[] }
 	}
+	
 	componentDidMount() {
 		axios.get(charactersUrl).then((res) => {
 
