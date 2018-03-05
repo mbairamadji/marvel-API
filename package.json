@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p",
     "dev": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot --history-api-fallback",
-    "postinstall": "npm run build"
+    "postinstall": "npm run webpack -p"
   },
   "author": "",
   "license": "ISC",
