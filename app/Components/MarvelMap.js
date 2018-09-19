@@ -2,6 +2,7 @@ import React from 'react'
 import Card from './Card'
 import axios from 'axios'
 import crypto from 'crypto'
+import { Link } from 'react-router'
 
 
 //Api URL and Keys
@@ -22,6 +23,14 @@ const hash = crypto.createHash("md5").update(concatenatedString).digest("hex");
 
 //Reqest URL
 const charactersUrl = `${BASE_URL}${URI}?ts=${ts}&apikey=${API_PUBLIC}&hash=${hash}`;
+
+const buttonStyle = {
+	width : "150px",
+	height : "40px",
+	borderRadius : "5px",
+	margin : 'auto 50%', 
+	fontSize : "16px"
+}
 
 
 export default class MarvelMap extends React.Component{
@@ -55,6 +64,7 @@ export default class MarvelMap extends React.Component{
 		return (
 			<div>
 				<h1 style={{textAlign:"center"}}>Liste des super héros:</h1>
+				<Link to='/'><button style={buttonStyle}>Go back</button></Link>
 				<div>{results}</div>
 			</div>
 

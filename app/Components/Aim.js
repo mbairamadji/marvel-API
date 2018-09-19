@@ -1,6 +1,12 @@
 import React from 'react'
 
-
+const buttonStyle = {
+	width : "150px",
+	height : "40px",
+	borderRadius : "5px",
+	margin : 'auto 50%', 
+	fontSize : "16px"
+}
 export default class Aim extends React.Component{
 
 	render() {
@@ -11,6 +17,7 @@ export default class Aim extends React.Component{
 					<div style={{float : "right", marginRight: "500px"}}>
 						<h3>{this.props.name}</h3>
 						<p>{this.props.description}</p>
+						<Link to='/'><button style={buttonStyle}>Go back</button></Link>
 					</div>
 				</div>
 			)
